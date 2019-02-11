@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{2149D48F-59F8-CB38-CBB7-69A09F15BF36}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SelectOnInput.cs">
+    <Files>
+      <File FileName="Assets/Scripts/LoadSceneOnClick.cs" Line="10" Column="44" />
+      <File FileName="Assets/Scripts/QuitOnClick.cs" Line="7" Column="17" />
+      <File FileName="Assets/Scripts/SelectOnInput.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
