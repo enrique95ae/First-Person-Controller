@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     float pitch = 0f;
 
     [Range(5, 15)]
-    float mouseSensitivity = 10f;
+    public float mouseSensitivity = 10f;
 
     [Range(45, 85)]
-    float pitchRange = 45f;
+    public float pitchRange = 45f;
 
     //member input values
     float xInput = 0f;
