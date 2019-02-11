@@ -13,6 +13,19 @@ public class Player : MonoBehaviour
     public Transform fpsCamera;
     float pitch = 0f;
 
+    [Range(5, 15)]
+    float mouseSensitivity = 10f;
+
+    [Range(45, 85)]
+    float pitchRange = 45f;
+
+    //member input values
+    float xInput = 0f;
+    float zInput = 0f;
+    float xMouse = 0f;
+    float yMouse = 0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +35,30 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xInput = Input.GetAxis("Horizontal") * speed;
-        float zInput = Input.GetAxis("Vertical") * speed;
+        GetInput();
+        UpdateMovement();
+    }
 
+
+    //------------------------functions------------------------------
+
+    void GetInput()
+    {
+        xInput = Input.GetAxis("Horizontal") * speed;
+        zInput = Input.GetAxis("Vertical") * speed;
+        xMouse = Input.GetAxis("Mouse X") * mouseSensitivity;
+        yMouse = Input.GetAxis("Mouse Y") * mouseSensitivity;
+    }
+
+    void UpdateMovement()
+    {
         Vector3 move = new Vector3(xInput, 0, zInput);
         move = Vector3.ClampMagnitude(move, speed);
         move = transform.TransformVector(move);
 
-        if(cc.isGrounded)
+        if (cc.isGrounded)
         {
-            if(Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 ySpeed = 15f;
             }
@@ -46,17 +73,16 @@ public class Player : MonoBehaviour
         }
 
         //applying movement
-        //cc.Move(new Vector3(xInput, ySpeed, zInput) * Time.deltaTime);
 
         cc.Move((move + new Vector3(0, ySpeed, 0)) * Time.deltaTime);
 
-        float xMouse = Input.GetAxis("Mouse X") * 10f;
+
         transform.Rotate(0, xMouse, 0);
 
-        pitch -= Input.GetAxis("Mouse Y") * 10f;
-        pitch = Mathf.Clamp(pitch, -45f, 45f);
+
+        pitch -= yMouse;
+        pitch = Mathf.Clamp(pitch, -pitchRange, pitchRange);
         Quaternion camRotation = Quaternion.Euler(pitch, 0, 0);
         fpsCamera.localRotation = camRotation;
-
     }
 }
